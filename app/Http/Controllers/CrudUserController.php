@@ -19,7 +19,7 @@ class CrudUserController extends Controller
      */
     public function login()
     {
-        return view('crud_user.login');
+        return view('crud_user.login1');
     }
 
     /**
@@ -28,11 +28,11 @@ class CrudUserController extends Controller
     public function authUser(Request $request)
     {
         $request->validate([
-            'email' => 'required',
+            'name' => 'required',
             'password' => 'required',
         ]);
 
-        $credentials = $request->only('email', 'password');
+        $credentials = $request->only('name', 'password');
 
         if (Auth::attempt($credentials)) {
             return redirect()->intended('list')
@@ -47,7 +47,7 @@ class CrudUserController extends Controller
      */
     public function createUser()
     {
-        return view('crud_user.create');
+        return view('crud_user.create1');
     }
 
     /**
@@ -64,8 +64,7 @@ class CrudUserController extends Controller
         $data = $request->all();
         $check = User::create([
             'name' => $data['name'],
-            'phone' => $data['phone'],
-            'address' => $data['address'],
+          
             'email' => $data['email'],
             'password' => Hash::make($data['password'])
         ]);
@@ -101,7 +100,7 @@ class CrudUserController extends Controller
         $user_id = $request->get('id');
         $user = User::find($user_id);
 
-        return view('crud_user.update', ['user' => $user]);
+        return view('crud_user.update1', ['user' => $user]);
     }
 
     /**
