@@ -19,6 +19,7 @@
                                         <span class="text-danger">{{ $errors->first('name') }}</span>
                                     @endif
                                 </div>
+                              
 
                                 <div class="form-group mb-3">
                                     <input type="text" placeholder="Phone" id="name" class="form-control" name="phone"
